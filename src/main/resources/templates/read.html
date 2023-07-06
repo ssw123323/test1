@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>글 내용 읽기/수정/삭제(Read/Update/Delete)</title>
+</head>
+<body>
+    <div class="wrap">
+        <h1>글 내용 읽기/수정/삭제(Read/Update/Delete)</h1>
+        <form th:action="@{/content/{id}(id=${board.id})}" th:method="post">
+            <div class="board_read">
+                <div th:text="'글 제목 : '+${board.title}"></div>
+                <div th:text="'작성자 : '+${board.writer}"></div>
+                <label for="contents">글 내용 : </label>
+                <textarea id="contents" name="contents" rows="5">[[${board.contents}]]</textarea>
+            </div>
+            <button type="submit">수정하기</button>
+            <button th:formaction="@{/content/delete/{id}(id=${board.id})}" type="submit">삭제하기</button>
+        </form>
+    </div>
+</body>
+</html>
